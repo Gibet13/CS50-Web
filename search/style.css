@@ -1,0 +1,48 @@
+body {
+    font-family: arial,sans-serif;
+    font-size: small;
+    min-height: 100vh;
+    padding: 1%;
+}
+
+.header {
+    position: relative;
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.header div {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#searchbox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    text-align: center;
+    margin: 5px;  
+}
+
+.logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    height: auto;
+
+    margin-top: 15%;
+}
+
+#advanced {
+    position: relative;
+}

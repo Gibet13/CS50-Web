@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <title>Search</title>
+    </head>
+    <body>
+        <div class="header">
+            <div>
+                <a href="index.html">Google search</a>
+            </div>
+            <div>
+                <a href="image_search.html">Images</a>
+            </div>
+        </div>
+
+        <div>
+            <H1>Advanced search</H1>
+        </div>
+
+        <div id="advanced">
+            
+            <form  action="https://google.com/search">
+                <div class="form-group row">
+                    <h4 class="col-sm-2">Find pages with…</h4>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="as_q">all these words:</label>
+                    <div class="col-6">
+                        <input class="form-control" type="text" name="as_q">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="as_epq">this exact word or phrase:</label>
+                    <div class="col-6">
+                        <input class="form-control" type="text" name="as_epq">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="as_oq">any of these words:</label>
+                    <div class="col-6">
+                        <input class="form-control" type="text" name="as_oq">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="as_eq">none of these words:</label>
+                    <div class="col-6">
+                        <input class="form-control" type="text" name="as_eq  ">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="as_nlo">numbers ranging from:</label>
+                    <div class="col-3">
+                        <input class="form-control" type="text" name="as_nlo">
+                    </div>
+                    <div>to</div>
+                    <div class="col-3">
+                        <input class="form-control" type="text" name="as_nhi">
+                    </div>
+                </div>
+                <div class="justify-content-center">
+                    <button type="submit" class="btn btn-light" value="Advanced Search">Advanced Search</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

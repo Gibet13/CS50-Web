@@ -1,0 +1,44 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    
+    <div class="container">
+    <h2>Active Listings</h2>
+        <form action="{% url 'index' %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <select class="custom-select" name='filter'>
+                    <option style='display:none'>Select category</option>
+                    {% for category in categories %}
+                        <option value={{category.id}}>{{ category }}</option>
+                    {% endfor %}
+                </select>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+    <div class="container">
+        <ul>
+            {% for listing in listings %}
+                <div class="row py-3">
+                    <div class="col-sm-6 feature">
+                        <a href="{% url 'listing' item_id=listing.id %}"><h3>{{ listing.name }}</h3></a>
+                        <p>{{ listing.category }}</p>
+                        <p>{{ listing.descryption }}</p>
+                        <h1>{{ listing.price }} €</h1>
+                    </div>
+                    <div id="image" class="col-sm-6 feature">
+                        <img src="{{ listing.image.url }}" alt={{ listing.image }} style="max-height:300px" onerror="this.src='https://www.pelectra.fr/includes/uploads/core/error_not_found.jpg?img=9326.08.15.5000.f.jpg'"></img>
+                    </div>
+                </div>
+            {% empty %}
+                <li>No Listings</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+{% endblock %}

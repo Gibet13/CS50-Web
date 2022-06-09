@@ -1,0 +1,12 @@
+body {
+    padding: 10px;
+}
+.custom-select {
+    width: fit-content;
+}
+
+#image {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}

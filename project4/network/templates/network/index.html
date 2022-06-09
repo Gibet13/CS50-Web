@@ -1,0 +1,48 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+
+    <div id="main">
+        
+        <div id="profile-view"></div>
+
+        {% if user.is_authenticated %}
+        <div id="create-post-view">
+            <h3>New Post</h3>
+            <form id="post-form">
+                <div class="form-group">
+                    <input class="form-control" id="post-title" placeholder="Title">
+                </div>
+                <textarea class="form-control" id="post-body" placeholder="Body"></textarea>
+                <input type="submit" class="btn btn-primary"/>
+            </form>
+        </div>
+        <div id="edit-post-view">
+            <h3>Edit Post</h3>
+            <form id="edit-form">
+                <div class="form-group">
+                    <input class="form-control" id="edit-title" placeholder="Title">
+                </div>
+                <textarea class="form-control" id="edit-body" placeholder="Body"></textarea>
+                <input type="submit" class="btn btn-primary"/>
+            </form>
+        </div>
+        {% endif %}
+        
+        <div id="posts-view"></div>
+
+        <div id="post-view">
+            <div id="post"></div>
+            <div id="comments">
+                <h5>Comments</h5>
+            </div>
+            <div id="comment-form">
+                <h5>Post a comment</h5>
+                <form id="comment-form">
+                    <textarea class="form-control" id="comment-body" placeholder="Body"></textarea>
+                    <input type="submit" class="btn btn-primary"/>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

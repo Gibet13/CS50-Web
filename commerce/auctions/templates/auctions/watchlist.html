@@ -1,0 +1,26 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    
+    <div class="container">
+    <h2>Watchlist</h2>
+        <ul>
+            {% for listing in watchlist %}
+                <div class="row py-3">
+                    <div class="col-sm-6 feature">
+                        <a href="{% url 'listing' item_id=listing.listings.id %}"><h3>{{ listing.listings.name }}</h3></a>
+                        <p>{{ listing.listings.category }}</p>
+                        <p>{{ listing.listings.descryption }}</p>
+                        <h1>{{ listing.listings.price }} €</h1>
+                    </div>
+                    <div id="image" class="col-sm-6 feature">
+                        <img src="{{ listing.listings.image.url }}" alt={{ listing.listings.image }} style="max-height:300px" onerror="this.src='https://www.pelectra.fr/includes/uploads/core/error_not_found.jpg?img=9326.08.15.5000.f.jpg'"></img>
+                    </div>
+                </div>
+            {% empty %}
+                <li>No Listings</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+{% endblock %}

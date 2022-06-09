@@ -1,0 +1,42 @@
+textarea {
+    min-height: 400px;
+}
+
+.mail_info {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid grey;
+    border-radius: 2px;
+}
+
+.mail_info > * {
+    padding :1%;
+}
+
+.mail_content {
+    display: flex;
+    flex-direction: column;
+}
+.mail_content > * {
+    padding :1%;
+}
+
+.recipient {
+    font-weight: bold;
+    flex: 0 0 auto;
+}
+
+.subject {
+    flex: 1 1 auto;
+}
+
+.timestamp {
+    flex: 0 0 auto;
+    color : gray;
+}
+
+.mail_body {
+    flex: 1 1 auto;
+    border-top: 1px solid grey;
+
+}

@@ -1,0 +1,124 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 feature">
+                {% if not listing.opened %}
+                    <h2>This listing is closed</h2>
+                {% endif %}
+                <h1>{{ listing.name }}</h1>
+            </div>
+            <div class="col-sm-3 feature row py-3">
+                {% if user.is_authenticated %}
+                    <div class="col-sm-6 feature">
+                        {% if is_watched %}
+                            <form action="{% url 'addwatchlist' item_id=listing.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">Remove from watchlist</button>
+                            </form>
+                        {% else %}
+                            <form action="{% url 'addwatchlist' item_id=listing.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">Add to watchlist</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                    {% if is_author %}
+                        <div class="col-sm-6 feature">
+                            <form action="{% url 'listing' item_id=listing.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">Close listing</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+            
+    <div class="container">
+        <div class="row py-3">
+            <div class="col-sm-6 feature">
+                <p>{{ listing.category }}</p>
+                <p>{{ listing.descryption }}</p>
+                <h2>{{ listing.price }} €</h2>
+                {% if is_winner %}
+                    <h2>You've won this auction !</h2>
+                {% endif %}
+            </div>
+            <div id="image" class="col-sm-6 feature">
+                <img src="{{ listing.image.url }}" alt="{{ listing.name }}" style="max-height:300px" onerror="this.src='https://www.pelectra.fr/includes/uploads/core/error_not_found.jpg?img=9326.08.15.5000.f.jpg'"></img>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row py-3">
+            <div class="col-sm-9 feature">
+                <div>
+                    <h2>Comments</h2>
+                    {% for comment in comments %}
+                        <div class="row py-3">
+                            <div class="col-sm-2 feature">
+                                <p>{{ comment.author }}:</p>
+                                <p>{{ comment.comment_date }}</p>
+                            </div>
+                            <div class="col-sm-10 feature">
+                                <p>{{ comment.content }}</p>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div>
+                            <h6>No Comments</h6>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if user.is_authenticated %}
+                <div name="commentform">
+                    <h4>Post your comment</h4>
+                    <form action="{% url 'postcomment' item_id=listing.id %}" method="post">
+                        {% csrf_token %}
+                        {{ commentform }}
+                        <button type="submit" class="btn btn-primary">Post comment</button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+                    <div class="col-sm-3 feature">
+                <div>
+                    <div>
+                        <h2>Bids</h2>
+                        {% for bid in bids %}
+                            <div class="row py-3">
+                                <div class="col-sm-6 feature">
+                                    <p>{{ bid.author }}:</p>
+                                    <p>{{ bid.bid_date }}</p>
+                                </div>
+                            <div class="col-sm-6 feature">
+                                <p>{{ bid.value }} €</p>
+                            </div>
+                        </div>
+                            {% empty %}
+                            <div>
+                                <h6>No Bids</h6>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% if user.is_authenticated %}
+                        {% if not is_author %}
+                            <div name="bidform">
+                                <h4>Post your bid</h4>
+                                <form action="{% url 'postbid' item_id=listing.id %}" method="post">
+                                    {% csrf_token %}
+                                    {{ bidform }}
+                                    <button type="submit" class="btn btn-primary">Post bid</button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
